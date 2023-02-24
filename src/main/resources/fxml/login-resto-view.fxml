@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.perrot54u.restaurationdb.controllers.LoginRestoController">
+    <top>
+        <Text fill="#ee0303" strokeType="OUTSIDE" strokeWidth="0.0" text="Système de restauration" textAlignment="JUSTIFY" BorderPane.alignment="CENTER">
+            <font>
+                <Font name="JetBrains Mono ExtraBold" size="22.0" />
+            </font>
+            <BorderPane.margin>
+                <Insets top="10.0" />
+            </BorderPane.margin>
+        </Text>
+    </top>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue sur l'interface de gestion du restaurant, veuillez vous connecter afin de pouvoir utiliser l'application" textAlignment="CENTER" wrappingWidth="402.373046875">
+                    <VBox.margin>
+                        <Insets left="100.0" top="100.0" />
+                    </VBox.margin>
+                </Text>
+                <HBox prefHeight="67.0" prefWidth="600.0">
+                    <children>
+                        <TextField fx:id="login" promptText="Adresse e-mail">
+                            <HBox.margin>
+                                <Insets left="150.0" top="25.0" />
+                            </HBox.margin>
+                        </TextField>
+                        <PasswordField fx:id="password" promptText="Mot de passe">
+                            <HBox.margin>
+                                <Insets left="15.0" top="25.0" />
+                            </HBox.margin></PasswordField>
+                    </children>
+                </HBox>
+                <Button mnemonicParsing="false" onMouseClicked="#onLogin" text="Se connecter" textAlignment="JUSTIFY">
+                    <VBox.margin>
+                        <Insets left="260.0" />
+                    </VBox.margin>
+                </Button>
+            <Text fx:id="errorMsg" fill="RED" layoutX="110.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erreur : l'adresse e-mail ou le mot de passe est incorrect" textAlignment="CENTER" visible="false" wrappingWidth="402.373046875">
+               <VBox.margin>
+                  <Insets left="100.0" top="20.0" />
+               </VBox.margin>
+            </Text>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>

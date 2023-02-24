@@ -12,7 +12,7 @@ public class FXMLUtils {
 
     private static Stage stage;
 
-    public static void initialize(Stage pStage){
+    public static void initialize(Stage pStage) {
         stage = pStage;
         stage.setResizable(false);
     }
