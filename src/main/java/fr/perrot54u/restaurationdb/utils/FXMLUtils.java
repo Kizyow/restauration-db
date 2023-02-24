@@ -18,14 +18,13 @@ public class FXMLUtils {
     }
 
     public static void loadSceneView(String fileName, String windowTitle) throws IOException {
-        URL url = Main.class.getResource(fileName);
+        URL url = Main.class.getResource("/fxml/" + fileName);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
 
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle(windowTitle);
         stage.setScene(scene);
         stage.show();
-
     }
 
 }
