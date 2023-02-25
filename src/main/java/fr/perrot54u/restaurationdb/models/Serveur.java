@@ -142,6 +142,36 @@ public class Serveur {
 
     }
 
+    public List<Integer> listReservation() throws SQLException {
+        return listOf("SELECT numres FROM reservation");
+    }
+
+    public List<Integer> listPlat() throws SQLException {
+        return listOf("SELECT numplat FROM plat");
+    }
+
+    public List<Integer> listOf(String query) throws SQLException {
+
+        Connection connection = DBConnection.createSession();
+        connection.setAutoCommit(false);
+
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(query);
+
+        List<Integer> lists = new ArrayList<>();
+        while (rs.next()) {
+            lists.add(rs.getInt(1));
+        }
+        statement.close();
+
+
+        connection.commit();
+        connection.close();
+
+        return lists;
+
+    }
+
     public int getNumServ() {
         return numServ;
     }

@@ -10,40 +10,42 @@ import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
-public class ReserverTableController {
+public class CommanderPlatController {
 
-
-    public DatePicker date;
-    public TextField heure;
     public TextArea result;
-    public TextField numTable;
-    public TextField nbPersonnes;
+    public ChoiceBox<Integer> listNumRes;
+    public ChoiceBox<Integer> listPlats;
+    public ChoiceBox<Integer> listQte;
 
     private Serveur personne;
 
     public void initialize(Serveur personne) {
         this.personne = personne;
+        this.initializeChoicebox();
     }
 
-    public void reserverTable(ActionEvent actionEvent) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public void initializeChoicebox() {
+        try {
+            listNumRes.getItems().setAll(personne.listReservation());
+            listPlats.getItems().setAll(personne.listPlat());
+            for (int i = 1; i < 10; i++) listQte.getItems().add(i);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-        if (date.getValue() == null || heure.getText().isEmpty() || numTable.getText().isEmpty() || nbPersonnes.getText().isEmpty()) {
+    public void commanderPlat(ActionEvent actionEvent) {
+
+        if (listNumRes.getValue() == null || listPlats.getValue() == null || listQte.getValue() == null) {
             result.setText("Erreur : vous n'avez pas mis tous les paramètres");
             return;
         }
 
-        String dateFormatted = date.getValue().format(formatter);
-        String heureFormatted = heure.getText();
-        int numTab = Integer.parseInt(numTable.getText());
-        int nbPers = Integer.parseInt(nbPersonnes.getText());
-
         try {
-            boolean hasBeenReserved = personne.reserverTable(numTab, dateFormatted + " " + heureFormatted, nbPers);
-            if(hasBeenReserved){
-                result.setText("Votre avez bien réservé la table n°" + numTab + " pour le " + dateFormatted + " à " + heureFormatted + " avec " + nbPers + " personnes !");
+            boolean done = personne.commanderPlat(listNumRes.getValue(), listPlats.getValue(), listQte.getValue());
+            if (done) {
+                result.setText("vous avez bien commandé le plat n°" + listPlats.getValue() + " (" + listQte.getValue() + "x) pour la réservation n°" + listNumRes.getValue());
             } else {
                 result.setText("La réservation n'a pas pu être effectuée...");
             }

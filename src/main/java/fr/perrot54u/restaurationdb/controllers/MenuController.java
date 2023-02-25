@@ -36,6 +36,8 @@ public class MenuController {
     }
 
     public void commanderPlats(ActionEvent actionEvent) {
+        CommanderPlatController controller = Views.COMMANDER_PLAT.loadScene();
+        controller.initialize(personne);
     }
 
     public void gestionServeurs(ActionEvent actionEvent) {

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.perrot54u.restaurationdb.controllers.CommanderPlatController">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="600.0">
+         <center>
+            <VBox alignment="TOP_CENTER" prefHeight="482.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="TOP_CENTER" prefHeight="41.0" prefWidth="600.0">
+                     <children>
+                        <Label text="Numéro de réservation" />
+                        <ChoiceBox fx:id="listNumRes" prefWidth="50.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin></ChoiceBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="20.0" prefHeight="41.0" prefWidth="600.0">
+                     <children>
+                        <Label text="Numéro de plat" />
+                        <ChoiceBox fx:id="listPlats" prefWidth="50.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="323.0" prefHeight="41.0" prefWidth="600.0">
+                     <children>
+                        <Label text="Quantité" />
+                        <ChoiceBox fx:id="listQte" prefWidth="50.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" onAction="#commanderPlat" text="Commander un plat">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <TextArea id="resultat" fx:id="result" editable="false" prefHeight="171.0" prefWidth="600.0">
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin></TextArea>
+               </children>
+            </VBox>
+         </center>
+         <top>
+            <HBox prefHeight="46.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onBack">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/back.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Commander un plat" textAlignment="JUSTIFY" underline="true">
+                     <font>
+                        <Font name="Bangla MN" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="210.0" top="10.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
