@@ -15,47 +15,47 @@
                         <Insets />
                     </VBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Réserver une table">
+                <Button mnemonicParsing="false" onAction="#reserverTable" text="Réserver une table">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Consulter les plats disponibles">
+                <Button mnemonicParsing="false" onAction="#consulterPlatsDisponibles" text="Consulter les plats disponibles">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Commander des plats">
+                <Button mnemonicParsing="false" onAction="#commanderPlats" text="Commander des plats">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Button>
-                <Button layoutX="244.0" layoutY="115.0" mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Gestion des serveurs">
+                <Button layoutX="244.0" layoutY="115.0" mnemonicParsing="false" onAction="#gestionServeurs" text="Gestion des serveurs">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Button>
-                <Button layoutX="244.0" layoutY="140.0" mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Affectation des serveurs">
+                <Button layoutX="244.0" layoutY="140.0" mnemonicParsing="false" onAction="#affectationServeurs" text="Affectation des serveurs">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Button>
-                <Button layoutX="244.0" layoutY="165.0" mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Gestion des plats">
+                <Button layoutX="244.0" layoutY="165.0" mnemonicParsing="false" onAction="#gestionPlats" text="Gestion des plats">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Button>
-                <Button layoutX="244.0" layoutY="220.0" mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Calcul du montant d'une réservation">
+                <Button layoutX="244.0" layoutY="220.0" mnemonicParsing="false" onAction="#calculReservation" text="Calcul du montant d'une réservation">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Button>
-                <Button layoutX="244.0" layoutY="245.0" mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Affichage du C.A et des commande prises pas les serveurs">
+                <Button layoutX="244.0" layoutY="245.0" mnemonicParsing="false" onAction="#afficherCA" text="Affichage du C.A et des commande prises pas les serveurs">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Button>
-                <Button layoutX="244.0" layoutY="270.0" mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Affichage des serveurs n'ayant pas fait de C.A">
+                <Button layoutX="244.0" layoutY="270.0" mnemonicParsing="false" onAction="#afficherServeursNonCA" text="Affichage des serveurs n'ayant pas fait de C.A">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>

@@ -17,17 +17,17 @@
                         <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Réserver une table">
+                  <Button mnemonicParsing="false" onAction="#reserverTable" text="Réserver une table">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Consulter les plats disponibles">
+                  <Button mnemonicParsing="false" onAction="#consulterPlatsDisponibles" text="Consulter les plats disponibles">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Commander des plats">
+                  <Button mnemonicParsing="false" onAction="#commanderPlats" text="Commander des plats">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>

@@ -36,10 +36,10 @@ public class LoginRestoController {
 
             if (personne.getGrade().equalsIgnoreCase("gestionnaire")) {
                 MenuController menuController = Views.MENU_GESTIONNAIRE.loadScene();
-                menuController.loadServerData(personne);
+                menuController.initialize(personne);
             } else {
                 MenuController menuController = Views.MENU_SERVEUR.loadScene();
-                menuController.loadServerData(personne);
+                menuController.initialize(personne);
             }
 
         } catch (SQLException e) {

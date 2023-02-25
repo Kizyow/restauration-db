@@ -13,7 +13,9 @@ public enum Views {
     LOGIN_ORACLE("login-oracle-view.fxml", "Connexion à la base de donnée - Système de restauration"),
     LOGIN_RESTO("login-resto-view.fxml", "Connexion au restaurant - Système de restauration"),
     MENU_SERVEUR("menu-serveur-view.fxml", "Menu (serveur) - Système de restauration"),
-    MENU_GESTIONNAIRE("menu-gestionnaire-view.fxml", "Menu (gestionnaire) - Système de restauration");
+    MENU_GESTIONNAIRE("menu-gestionnaire-view.fxml", "Menu (gestionnaire) - Système de restauration"),
+    CONSULTER_TABLES("consulter-tables-view.fxml", "Consulter les tables - Système de restauration"),
+    RESERVER_TABLE("reserver-table-view.fxml", "Réserver une tables - Système de restauration");
 
     private final String fileName;
     private final String windowTitle;
