@@ -15,7 +15,8 @@ public enum Views {
     MENU_SERVEUR("menu-serveur-view.fxml", "Menu (serveur) - Système de restauration"),
     MENU_GESTIONNAIRE("menu-gestionnaire-view.fxml", "Menu (gestionnaire) - Système de restauration"),
     CONSULTER_TABLES("consulter-tables-view.fxml", "Consulter les tables - Système de restauration"),
-    RESERVER_TABLE("reserver-table-view.fxml", "Réserver une tables - Système de restauration");
+    RESERVER_TABLE("reserver-table-view.fxml", "Réserver une table - Système de restauration"),
+    CONSULTER_PLATS("consulter-plats-view.fxml", "Consulter les plats - Système de restauration");
 
     private final String fileName;
     private final String windowTitle;

@@ -31,6 +31,8 @@ public class MenuController {
     }
 
     public void consulterPlatsDisponibles(ActionEvent actionEvent) {
+        ConsulterPlatsController controller = Views.CONSULTER_PLATS.loadScene();
+        controller.initialize(personne);
     }
 
     public void commanderPlats(ActionEvent actionEvent) {

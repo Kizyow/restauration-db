@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.perrot54u.restaurationdb.controllers.ConsulterPlatsController">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="600.0">
+         <top>
+            <HBox prefHeight="46.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onBack">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/back.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Consulter les plats disponibles" textAlignment="JUSTIFY" underline="true">
+                     <font>
+                        <Font name="Bangla MN" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="180.0" top="10.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <TextArea id="resultat" fx:id="result" editable="false" prefHeight="305.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

@@ -93,6 +93,55 @@ public class Serveur {
 
     }
 
+    public List<Plat> consulterPlats() throws SQLException {
+
+        Connection connection = DBConnection.createSession();
+        connection.setAutoCommit(false);
+
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM plat");
+        ResultSet rs = ps.executeQuery();
+
+        List<Plat> plats = new ArrayList<>();
+
+        while (rs.next()) {
+            int numPlat = rs.getInt("numplat");
+            String libelle = rs.getString("libelle");
+            Plat.PlatType platType = Plat.PlatType.fromLibelle(rs.getString("type"));
+            double prixunit = rs.getDouble("prixunit");
+            int qteServie = rs.getInt("qteservie");
+
+            Plat plat = new Plat(numPlat, libelle, platType, prixunit, qteServie);
+            plats.add(plat);
+        }
+
+        ps.close();
+
+        connection.commit();
+        connection.close();
+
+        return plats;
+    }
+
+    public boolean commanderPlat(int numres, int numplat, int quantite) throws SQLException {
+
+        Connection connection = DBConnection.createSession();
+        connection.setAutoCommit(false);
+
+        PreparedStatement ps = connection.prepareStatement("INSERT INTO commande VALUES(?,?,?)");
+        ps.setInt(1, numres);
+        ps.setInt(2, numplat);
+        ps.setInt(3, quantite);
+        ps.executeUpdate();
+
+        ps.close();
+
+        connection.commit();
+        connection.close();
+
+        return true;
+
+    }
+
     public int getNumServ() {
         return numServ;
     }
