@@ -7,3 +7,12 @@ où on doit mettre en place une application permettant de gérer un restaurant e
 
 ## Fonctionnalités
 
+- Système d'authentification pour le restaurant (serveur/gestionnaire)
+- Un serveur peut réaliser ces opérations suivantes
+  - Consulter les tables disponibles pour une date et heure donnée
+  - Réserver une table pour une date et heure donnée
+  - Consulter les plats disponibles
+  - Commander des plats
+- Un gestionnaire, en plus de pouvoir faire tous les opérations d'un serveur, peut faire en plus
+
+
