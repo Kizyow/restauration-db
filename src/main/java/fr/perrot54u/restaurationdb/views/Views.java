@@ -1,8 +1,12 @@
 package fr.perrot54u.restaurationdb.views;
 
-import fr.perrot54u.restaurationdb.utils.FXMLUtils;
+import fr.perrot54u.restaurationdb.Main;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
 public enum Views {
 
@@ -11,21 +15,34 @@ public enum Views {
     MENU_SERVEUR("menu-serveur-view.fxml", "Menu (serveur) - Système de restauration"),
     MENU_GESTIONNAIRE("menu-gestionnaire-view.fxml", "Menu (gestionnaire) - Système de restauration");
 
-    private String fileName;
-    private String windowTitle;
+    private final String fileName;
+    private final String windowTitle;
+    private static Stage stage;
 
     Views(String fileName, String windowTitle) {
         this.fileName = fileName;
         this.windowTitle = windowTitle;
     }
 
-    public void loadScene() {
+    public static void initialize(Stage pStage) {
+        stage = pStage;
+        stage.setResizable(false);
+    }
+
+    public <T> T loadScene() {
+        URL url = Main.class.getResource("/fxml/" + fileName);
+        FXMLLoader fxmlLoader = new FXMLLoader(url);
 
         try {
-            FXMLUtils.loadSceneView(this.fileName, this.windowTitle);
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setTitle(windowTitle);
+            stage.setScene(scene);
+            stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        return fxmlLoader.getController();
 
     }
 

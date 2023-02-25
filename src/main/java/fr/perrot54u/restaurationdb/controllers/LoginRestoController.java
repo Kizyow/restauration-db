@@ -35,9 +35,11 @@ public class LoginRestoController {
             }
 
             if (personne.getGrade().equalsIgnoreCase("gestionnaire")) {
-                Views.MENU_GESTIONNAIRE.loadScene();
+                MenuController menuController = Views.MENU_GESTIONNAIRE.loadScene();
+                menuController.loadServerData(personne);
             } else {
-                Views.MENU_SERVEUR.loadScene();
+                MenuController menuController = Views.MENU_SERVEUR.loadScene();
+                menuController.loadServerData(personne);
             }
 
         } catch (SQLException e) {
@@ -56,7 +58,7 @@ public class LoginRestoController {
         preparedStatement.setString(1, login.getText());
         preparedStatement.setString(2, password.getText());
         ResultSet rs = preparedStatement.executeQuery();
-        Serveur personne = null;
+        Serveur p = null;
 
         if (rs.next()) {
             int numserv = rs.getInt("numserv");
@@ -64,16 +66,16 @@ public class LoginRestoController {
             String nomServ = rs.getString("nomserv");
             String grade = rs.getString("grade");
             if (grade.equalsIgnoreCase("gestionnaire")) {
-                personne = new Gestionnaire(numserv, email, nomServ);
+                p = new Gestionnaire(numserv, email, nomServ);
             } else {
-                personne = new Serveur(numserv, email, nomServ);
+                p = new Serveur(numserv, email, nomServ);
             }
         }
 
         connection.commit();
         connection.close();
 
-        return personne;
+        return p;
 
     }
 

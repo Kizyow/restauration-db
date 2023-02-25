@@ -12,22 +12,22 @@
          <center>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onSwitchDeterminationListeVehicule" text="Consulter les tables disponibles" textAlignment="JUSTIFY">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Consulter les tables disponibles" textAlignment="JUSTIFY">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#onSwitchReservationVehicule" text="Réserver une table">
+                  <Button mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Réserver une table">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#onSwitchPrixLocation" text="Consulter les plats disponibles">
+                  <Button mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Consulter les plats disponibles">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#onSwitchListeAgences" text="Commander des plats">
+                  <Button mnemonicParsing="false" onAction="#consulterTablesDisponibles" text="Commander des plats">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -39,29 +39,39 @@
             </VBox>
          </center>
          <top>
-            <HBox prefHeight="38.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="89.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#onDisconnect" prefHeight="29.0" prefWidth="30.0" textFill="#f80000">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/back.jpg" />
-                           </image></ImageView>
-                     </graphic>
-                  </Button>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion du restaurant" textAlignment="JUSTIFY" wrappingWidth="336.0897521972656">
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="600.0">
+                     <children>
+                        <Button mnemonicParsing="false" onMouseClicked="#onDisconnect" prefHeight="29.0" prefWidth="30.0" textFill="#f80000">
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/back.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion du restaurant" textAlignment="JUSTIFY" wrappingWidth="336.0897521972656">
+                           <font>
+                              <Font name="Arial Black" size="28.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="95.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <Text fx:id="serverData" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="336.0897521972656">
                      <font>
-                        <Font name="Arial Black" size="28.0" />
+                        <Font name="Arial" size="16.0" />
                      </font>
-                     <HBox.margin>
-                        <Insets left="95.0" />
-                     </HBox.margin>
+                     <VBox.margin>
+                        <Insets left="133.0" />
+                     </VBox.margin>
                   </Text>
                </children>
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-            </HBox>
+            </VBox>
          </top>
       </BorderPane>
    </children>
