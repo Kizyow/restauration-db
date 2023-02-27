@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.perrot54u.restaurationdb.controllers.AffecterServeurController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.perrot54u.restaurationdb.controllers.CalculMontantController">
     <children>
         <BorderPane prefHeight="400.0" prefWidth="600.0">
             <center>
@@ -14,8 +14,8 @@
                     <children>
                         <HBox alignment="TOP_CENTER" prefHeight="41.0" prefWidth="600.0">
                             <children>
-                                <Label text="Numéro de table" />
-                                <ChoiceBox fx:id="listNumTab" prefWidth="50.0">
+                                <Label text="Numéro de réservation" />
+                                <ChoiceBox fx:id="listNumRes" prefWidth="60.0">
                                     <HBox.margin>
                                         <Insets left="10.0" />
                                     </HBox.margin>
@@ -27,25 +27,30 @@
                         </HBox>
                         <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="20.0" prefHeight="41.0" prefWidth="600.0">
                             <children>
-                                <Label text="Numéro du serveur" />
-                                <ChoiceBox fx:id="listNumServ" prefWidth="50.0">
+                                <Label text="Mode de paiement" />
+                                <ChoiceBox fx:id="listModPaiement" prefWidth="100.0">
                                     <HBox.margin>
                                         <Insets left="10.0" />
                                     </HBox.margin>
                                 </ChoiceBox>
                             </children>
                         </HBox>
-                        <DatePicker fx:id="date" promptText="Date">
-                            <HBox.margin>
-                                <Insets right="10.0" />
-                            </HBox.margin>
-                        </DatePicker>
-                        <Button mnemonicParsing="false" onAction="#affecterServeur" text="Affecter un serveur">
+                        <HBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="200.0">
+                            <children>
+                                <DatePicker fx:id="date" promptText="Date">
+                                    <HBox.margin>
+                                        <Insets right="10.0" />
+                                    </HBox.margin>
+                                </DatePicker>
+                                <TextField fx:id="heure" promptText="Heure (hh:mm)" />
+                            </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" onAction="#calculerMontant" text="Calculer le montant de la réservation et payer">
                             <VBox.margin>
                                 <Insets top="10.0" />
                             </VBox.margin>
                         </Button>
-                        <TextArea id="resultat" fx:id="result" editable="false" prefHeight="171.0" prefWidth="600.0">
+                        <TextArea id="resultat" fx:id="result" editable="false" prefHeight="175.0" prefWidth="600.0">
                             <VBox.margin>
                                 <Insets top="25.0" />
                             </VBox.margin>
@@ -65,12 +70,12 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Affecter un serveur" textAlignment="JUSTIFY" underline="true">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Calculer le montant d'une réservation" textAlignment="JUSTIFY" underline="true">
                             <font>
                                 <Font name="Bangla MN" size="13.0" />
                             </font>
                             <HBox.margin>
-                                <Insets left="210.0" top="10.0" />
+                                <Insets left="140.0" top="10.0" />
                             </HBox.margin>
                         </Text>
                     </children>

@@ -52,6 +52,8 @@ public class MenuController {
     }
 
     public void calculReservation(ActionEvent actionEvent) {
+        CalculMontantController controller = Views.CALCUL_MONTANT.loadScene();
+        controller.initialize(personne);
     }
 
     public void afficherCA(ActionEvent actionEvent) {
