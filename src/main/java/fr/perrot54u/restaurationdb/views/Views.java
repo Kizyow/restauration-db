@@ -17,7 +17,8 @@ public enum Views {
     CONSULTER_TABLES("consulter-tables-view.fxml", "Consulter les tables - Système de restauration"),
     RESERVER_TABLE("reserver-table-view.fxml", "Réserver une table - Système de restauration"),
     CONSULTER_PLATS("consulter-plats-view.fxml", "Consulter les plats - Système de restauration"),
-    COMMANDER_PLAT("commander-plat-view.fxml", "Commander un plat - Système de restauration");
+    COMMANDER_PLAT("commander-plat-view.fxml", "Commander un plat - Système de restauration"),
+    AFFECTER_SERVEUR("affecter-serveur-view.fxml", "Affecter un serveur - Système de restauration");
 
     private final String fileName;
     private final String windowTitle;

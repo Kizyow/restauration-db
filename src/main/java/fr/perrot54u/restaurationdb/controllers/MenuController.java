@@ -44,6 +44,8 @@ public class MenuController {
     }
 
     public void affectationServeurs(ActionEvent actionEvent) {
+        AffecterServeurController controller = Views.AFFECTER_SERVEUR.loadScene();
+        controller.initialize(personne);
     }
 
     public void gestionPlats(ActionEvent actionEvent) {

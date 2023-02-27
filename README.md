@@ -14,5 +14,6 @@ où on doit mettre en place une application permettant de gérer un restaurant e
   - Consulter les plats disponibles
   - Commander des plats
 - Un gestionnaire, en plus de pouvoir faire tous les opérations d'un serveur, peut faire en plus
+  - Affecter un serveur à une table à une date donnée
 
 
