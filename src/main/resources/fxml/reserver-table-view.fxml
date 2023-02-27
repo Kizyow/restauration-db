@@ -35,7 +35,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button mnemonicParsing="false" onAction="#reserverTable" text="Consulter les tables disponibles">
+                  <Button mnemonicParsing="false" onAction="#reserverTable" text="Réserver une table">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>

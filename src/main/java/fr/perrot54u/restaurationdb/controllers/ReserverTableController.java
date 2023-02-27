@@ -43,7 +43,7 @@ public class ReserverTableController {
         try {
             boolean hasBeenReserved = personne.reserverTable(numTab, dateFormatted + " " + heureFormatted, nbPers);
             if(hasBeenReserved){
-                result.setText("Votre avez bien réservé la table n°" + numTab + " pour le " + dateFormatted + " à " + heureFormatted + " avec " + nbPers + " personnes !");
+                result.setText("Vous avez bien réservé la table n°" + numTab + " pour le " + dateFormatted + " à " + heureFormatted + " avec " + nbPers + " personnes !");
             } else {
                 result.setText("La réservation n'a pas pu être effectuée...");
             }
