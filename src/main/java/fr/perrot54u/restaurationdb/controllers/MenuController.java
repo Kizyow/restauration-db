@@ -49,6 +49,8 @@ public class MenuController {
     }
 
     public void gestionPlats(ActionEvent actionEvent) {
+        GererPlatController controller = Views.GERER_PLAT.loadScene();
+        controller.initialize(personne);
     }
 
     public void calculReservation(ActionEvent actionEvent) {

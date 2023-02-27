@@ -67,6 +67,75 @@ public class Gestionnaire extends Serveur {
 
     }
 
+    public boolean creerPlat(String libelle, String type, double prix) throws SQLException {
+
+        Connection connection = DBConnection.createSession();
+        connection.setAutoCommit(false);
+
+        try {
+
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT MAX(numplat) as maxi FROM plat");
+            int max = 0;
+            if (rs.next()) {
+                max = rs.getInt("maxi");
+            }
+            statement.close();
+
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO plat VALUES(?,?,?,?,?)");
+
+            ps.setInt(1, max+1);
+            ps.setString(2, libelle);
+            ps.setString(3, type);
+            ps.setDouble(4, prix);
+            ps.setInt(5, 0);
+            ps.executeUpdate();
+
+            ps.close();
+
+            connection.commit();
+            connection.close();
+
+            return true;
+
+        } catch (SQLException e) {
+            connection.rollback();
+            connection.close();
+            return false;
+        }
+
+    }
+
+    public boolean updatePlat(int numplat, String libelle, String type, double prix) throws SQLException {
+
+        Connection connection = DBConnection.createSession();
+        connection.setAutoCommit(false);
+
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("UPDATE plat SET libelle=?,type=?,prixunit=? WHERE numplat = ?");
+
+            ps.setString(1, libelle);
+            ps.setString(2, type);
+            ps.setDouble(3, prix);
+            ps.setInt(4, numplat);
+            ps.executeUpdate();
+
+            ps.close();
+
+            connection.commit();
+            connection.close();
+
+            return true;
+
+        } catch (SQLException e) {
+            connection.rollback();
+            connection.close();
+            return false;
+        }
+
+    }
+
     public double calculMontantReservation(int numres, String dateHeure, String modePaiement) throws SQLException {
 
         Connection connection = DBConnection.createSession();
@@ -159,13 +228,13 @@ public class Gestionnaire extends Serveur {
         connection.setAutoCommit(false);
 
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT NUMSERV, NOMSERV FROM SERVEUR " +
-                        "WHERE NUMSERV NOT IN ( " +
-                        "SELECT NUMSERV " +
-                        "FROM RESERVATION " +
-                        "INNER JOIN AFFECTER on RESERVATION.NUMTAB = AFFECTER.NUMTAB " +
-                        "WHERE DATRES LIKE AFFECTER.DATAFF " +
-                        "AND DATPAIE BETWEEN to_date(?, 'dd/MM/yyyy') AND to_date(?, 'dd/MM/yyyy') " +
-                        "GROUP BY NUMSERV)");
+                "WHERE NUMSERV NOT IN ( " +
+                "SELECT NUMSERV " +
+                "FROM RESERVATION " +
+                "INNER JOIN AFFECTER on RESERVATION.NUMTAB = AFFECTER.NUMTAB " +
+                "WHERE DATRES LIKE AFFECTER.DATAFF " +
+                "AND DATPAIE BETWEEN to_date(?, 'dd/MM/yyyy') AND to_date(?, 'dd/MM/yyyy') " +
+                "GROUP BY NUMSERV)");
         preparedStatement.setString(1, dateDebut);
         preparedStatement.setString(2, dateFin);
         ResultSet rs = preparedStatement.executeQuery();
@@ -184,5 +253,7 @@ public class Gestionnaire extends Serveur {
         return serveurCA;
 
     }
+
+
 
 }
