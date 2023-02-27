@@ -8,6 +8,14 @@ public class Plat {
     private double prix;
     private int quantiteServie;
 
+    /**
+     * Permet d'avoir les données sur un plat
+     * @param numPlat
+     * @param nomPlat
+     * @param platType
+     * @param prix
+     * @param quantiteServie
+     */
     public Plat(int numPlat, String nomPlat, PlatType platType, double prix, int quantiteServie) {
         this.numPlat = numPlat;
         this.nomPlat = nomPlat;

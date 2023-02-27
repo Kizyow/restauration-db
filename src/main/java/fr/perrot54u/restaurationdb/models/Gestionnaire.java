@@ -11,6 +11,12 @@ import java.util.*;
 
 public class Gestionnaire extends Serveur {
 
+    /**
+     * Représente un gestionnaire du restaurant qui hérite des attributs d'un serveur mais possède des méthodes en plus
+     * @param numServ
+     * @param email
+     * @param nomServ
+     */
     public Gestionnaire(int numServ, String email, String nomServ) {
         super(numServ, email, nomServ);
     }
@@ -20,14 +26,32 @@ public class Gestionnaire extends Serveur {
         return "gestionnaire";
     }
 
+    /**
+     * Retourne la liste des numéros de serveurs
+     * @return
+     * @throws SQLException
+     */
     public List<Integer> listServeur() throws SQLException {
         return listOf("SELECT numserv FROM serveur");
     }
 
+    /**
+     * Retourne la liste des numéros de tables
+     * @return
+     * @throws SQLException
+     */
     public List<Integer> listTable() throws SQLException {
         return listOf("SELECT numtab FROM tabl");
     }
 
+    /**
+     * Permet d'affecter un serveur à une table à une date donnée
+     * @param numtab numéro table
+     * @param dateStr date donnée
+     * @param numserv numéro serveur
+     * @return true si la requete s'est completée sinon false
+     * @throws SQLException
+     */
     public boolean affecterServeur(int numtab, String dateStr, int numserv) throws SQLException {
 
         Connection connection = DBConnection.createSession();
@@ -67,6 +91,15 @@ public class Gestionnaire extends Serveur {
 
     }
 
+    /**
+     * Permet de créer un serveur
+     * @param nom
+     * @param email
+     * @param password
+     * @param grade
+     * @return
+     * @throws SQLException
+     */
     public boolean creerServeur(String nom, String email, String password, String grade) throws SQLException {
 
         Connection connection = DBConnection.createSession();
@@ -106,6 +139,16 @@ public class Gestionnaire extends Serveur {
 
     }
 
+    /**
+     * Permet de mettre à jour les infos d'un serveur a partir d'un id serveur
+     * @param numserv
+     * @param nom
+     * @param email
+     * @param password
+     * @param grade
+     * @return
+     * @throws SQLException
+     */
     public boolean updateServeur(int numserv, String nom, String email, String password, String grade) throws SQLException {
 
         Connection connection = DBConnection.createSession();
@@ -137,6 +180,14 @@ public class Gestionnaire extends Serveur {
 
     }
 
+    /**
+     * Permet de créer un nouveau plat
+     * @param libelle
+     * @param type
+     * @param prix
+     * @return
+     * @throws SQLException
+     */
     public boolean creerPlat(String libelle, String type, double prix) throws SQLException {
 
         Connection connection = DBConnection.createSession();
@@ -176,6 +227,15 @@ public class Gestionnaire extends Serveur {
 
     }
 
+    /**
+     * Permet de mettre à jour un plat à partir d'un id plat
+     * @param numplat
+     * @param libelle
+     * @param type
+     * @param prix
+     * @return
+     * @throws SQLException
+     */
     public boolean updatePlat(int numplat, String libelle, String type, double prix) throws SQLException {
 
         Connection connection = DBConnection.createSession();
@@ -206,6 +266,14 @@ public class Gestionnaire extends Serveur {
 
     }
 
+    /**
+     * Permet de calculer le montant toal d'une réservation et encaisse
+     * @param numres
+     * @param dateHeure
+     * @param modePaiement
+     * @return
+     * @throws SQLException
+     */
     public double calculMontantReservation(int numres, String dateHeure, String modePaiement) throws SQLException {
 
         Connection connection = DBConnection.createSession();
@@ -257,6 +325,13 @@ public class Gestionnaire extends Serveur {
 
     }
 
+    /**
+     * Permet d'afficher les serveurs ayant fait du chiffre d'affaire avec leur nb de commandes et le montant total
+     * @param dateDebut
+     * @param dateFin
+     * @return
+     * @throws SQLException
+     */
     public List<ServeurData> afficherServeurCA(String dateDebut, String dateFin) throws SQLException {
 
         Connection connection = DBConnection.createSession();
@@ -292,6 +367,13 @@ public class Gestionnaire extends Serveur {
 
     }
 
+    /**
+     * Permet d'afficher les serveurs n'ayant pas generé de chiffre d'affaire à une date donnée
+     * @param dateDebut
+     * @param dateFin
+     * @return
+     * @throws SQLException
+     */
     public List<ServeurData> afficherServeurNonCA(String dateDebut, String dateFin) throws SQLException {
 
         Connection connection = DBConnection.createSession();

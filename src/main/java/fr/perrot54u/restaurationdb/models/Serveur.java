@@ -20,6 +20,12 @@ public class Serveur {
         this.nomServ = nomServ;
     }
 
+    /**
+     * Permet de consulter les tables disponibles à une date et heure donnée
+     * @param dateHeure
+     * @return
+     * @throws SQLException
+     */
     public List<Integer> consulterTablesDisponible(String dateHeure) throws SQLException {
 
         Connection connection = DBConnection.createSession();
@@ -39,6 +45,14 @@ public class Serveur {
 
     }
 
+    /**
+     * Permet de réserver une table à une date et heure donnée
+     * @param numtab
+     * @param dateHeure
+     * @param nbpers
+     * @return true si la reservation s'est effectué sinon false si la table est pas dispo par exemple
+     * @throws SQLException
+     */
     public boolean reserverTable(int numtab, String dateHeure, int nbpers) throws SQLException {
 
         Connection connection = DBConnection.createSession();
@@ -93,6 +107,11 @@ public class Serveur {
 
     }
 
+    /**
+     * Permet de voir la carte des plats
+     * @return
+     * @throws SQLException
+     */
     public List<Plat> consulterPlats() throws SQLException {
 
         Connection connection = DBConnection.createSession();
@@ -122,6 +141,14 @@ public class Serveur {
         return plats;
     }
 
+    /**
+     * Permet de commander un plat à partir d'un id plat
+     * @param numres
+     * @param numplat
+     * @param quantite
+     * @return
+     * @throws SQLException
+     */
     public boolean commanderPlat(int numres, int numplat, int quantite) throws SQLException {
 
         Connection connection = DBConnection.createSession();
@@ -142,14 +169,30 @@ public class Serveur {
 
     }
 
+    /**
+     * Retourne la liste des numéros de reservations
+     * @return
+     * @throws SQLException
+     */
     public List<Integer> listReservation() throws SQLException {
         return listOf("SELECT numres FROM reservation");
     }
 
+    /**
+     * Retourne la liste des numéros de plats
+     * @return
+     * @throws SQLException
+     */
     public List<Integer> listPlat() throws SQLException {
         return listOf("SELECT numplat FROM plat");
     }
 
+    /**
+     * Retourne la clé principale sur une table donnée
+     * @param query
+     * @return
+     * @throws SQLException
+     */
     public List<Integer> listOf(String query) throws SQLException {
 
         Connection connection = DBConnection.createSession();

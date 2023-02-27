@@ -21,4 +21,15 @@ où on doit mettre en place une application permettant de gérer un restaurant e
   - Affichage des serveurs ayant fait du chiffre d'affaire sur une periode donnée
   - Affichage des serveurs n'ayant pas fait de chiffre d'affaire sur une periode donnée
 
+## Détails technique
+
+L'application à été produite en Java 17 (avec JavaFX 17 et Gradle en gestionnaire de dépendances)
+Pour pouvoir utiliser ce projet, vous devez lancer un gradle init (attendez qu'il download toutes les dépendences)
+
+**Et vous pouvez lancer l'application à partir du Main** (dans src/main/java/fr/perrot54u/restaurationdb/Main.java)
+
+Si vous souhaitez utiliser une autre base de donnée que celle de l'IUT Charlemagne, vous pouvez créer votre base de donnée Oracle
+(changez l'URL de connexion dans DBConnection.java) et je vous ai fourni un fichier SQL dans resources/sql permettant
+de créer les tables avec le jeu de données.
+
 

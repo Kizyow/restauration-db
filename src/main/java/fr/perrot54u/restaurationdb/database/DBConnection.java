@@ -13,6 +13,12 @@ public class DBConnection {
     private static String password;
     private static final String JDBC_URL = "jdbc:oracle:thin:@" + serverName + ":" + portNumber + ":" + dbName;
 
+    /**
+     * Initialiser la base de donnée avec le login/password
+     * @param usr
+     * @param pwd
+     * @throws ClassNotFoundException
+     */
     public static void initializeDatabase(String usr, String pwd) throws ClassNotFoundException {
         username = usr;
         password = pwd;
@@ -20,7 +26,7 @@ public class DBConnection {
     }
 
     /**
-     * @return Une session de DBConnection
+     * @return Une session de DBConnection (en mode transactionnel)
      */
     public static Connection createSession() throws SQLException {
         return DriverManager.getConnection(JDBC_URL, username, password);

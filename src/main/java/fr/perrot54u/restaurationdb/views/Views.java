@@ -10,6 +10,9 @@ import java.net.URL;
 
 public enum Views {
 
+    /**
+     * Liste des toutes les vues de l'application (conversion FXML vers Java)
+     */
     LOGIN_ORACLE("login-oracle-view.fxml", "Connexion à la base de donnée - Système de restauration"),
     LOGIN_RESTO("login-resto-view.fxml", "Connexion au restaurant - Système de restauration"),
     MENU_SERVEUR("menu-serveur-view.fxml", "Menu (serveur) - Système de restauration"),
@@ -34,11 +37,20 @@ public enum Views {
         this.windowTitle = windowTitle;
     }
 
+    /**
+     * Permet de charger les scènes à partir d'un stage donné
+     * @param pStage
+     */
     public static void initialize(Stage pStage) {
         stage = pStage;
         stage.setResizable(false);
     }
 
+    /**
+     * Permet de charger une scène à partir de la liste ci dessus
+     * @return Retourne le contrôleur correspondant à l'application
+     * @param <T> Le controleur
+     */
     public <T> T loadScene() {
         URL url = Main.class.getResource("/fxml/" + fileName);
         FXMLLoader fxmlLoader = new FXMLLoader(url);

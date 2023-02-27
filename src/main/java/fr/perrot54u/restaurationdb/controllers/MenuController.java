@@ -11,11 +11,20 @@ public class MenuController {
     public Text serverData;
     private Serveur personne;
 
+    /**
+     * Controller principal de l'application qui va rediriger vers les fonctionnalités
+     */
+
     public void initialize(Serveur personne) {
         this.personne = personne;
+        // charge les infos du serveur/gestionnaire
         serverData.setText(personne.getNomServ() + " - " + personne.getGrade());
     }
 
+    /**
+     * Se deconnecter de l'appli du restaurant (pas de la DB!!!)
+     * @param mouseEvent
+     */
     public void onDisconnect(MouseEvent mouseEvent) {
         Views.LOGIN_RESTO.loadScene();
     }
