@@ -3,9 +3,11 @@ package fr.perrot54u.restaurationdb.models;
 import fr.perrot54u.restaurationdb.database.DBConnection;
 
 import java.sql.*;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.*;
 
 public class Gestionnaire extends Serveur {
 
@@ -70,7 +72,8 @@ public class Gestionnaire extends Serveur {
         Connection connection = DBConnection.createSession();
         connection.setAutoCommit(false);
 
-        PreparedStatement psPrix = connection.prepareStatement("SELECT SUM(prixunit*quantite) as prixtotal FROM COMMANDE INNER JOIN PLAT P on P.NUMPLAT = COMMANDE.NUMPLAT WHERE numres = ? GROUP BY numres");
+        PreparedStatement psPrix = connection.prepareStatement("SELECT SUM(prixunit*quantite) as prixtotal " +
+                "FROM COMMANDE INNER JOIN PLAT P on P.NUMPLAT = COMMANDE.NUMPLAT WHERE numres = ? GROUP BY numres");
         psPrix.setInt(1, numres);
 
         ResultSet rsPrix = psPrix.executeQuery();
@@ -112,6 +115,73 @@ public class Gestionnaire extends Serveur {
             connection.close();
             return -1;
         }
+
+    }
+
+    public List<ServeurData> afficherServeurCA(String dateDebut, String dateFin) throws SQLException {
+
+        Connection connection = DBConnection.createSession();
+        connection.setAutoCommit(false);
+
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT AFFECTER.NUMSERV as numserv, nomserv, sum(montcom) as montant, count(*) as nbcom " +
+                "FROM RESERVATION " +
+                "INNER JOIN AFFECTER on RESERVATION.NUMTAB = AFFECTER.NUMTAB " +
+                "INNER JOIN SERVEUR on AFFECTER.NUMSERV = SERVEUR.NUMSERV " +
+                "WHERE DATRES LIKE AFFECTER.DATAFF " +
+                "AND DATPAIE BETWEEN to_date(?, 'dd/MM/yyyy') AND to_date(?, 'dd/MM/yyyy') " +
+                "GROUP BY AFFECTER.NUMSERV, nomserv " +
+                "ORDER BY montant DESC");
+        preparedStatement.setString(1, dateDebut);
+        preparedStatement.setString(2, dateFin);
+        ResultSet rs = preparedStatement.executeQuery();
+
+        List<ServeurData> serveurCA = new ArrayList<>();
+
+        while (rs.next()) {
+            int numserv = rs.getInt("numserv");
+            String nom = rs.getString("nomserv");
+            int nbcom = rs.getInt("nbcom");
+            double montant = rs.getDouble("montant");
+            serveurCA.add(new ServeurData(numserv, nom, nbcom, montant));
+        }
+
+
+        connection.commit();
+        connection.close();
+
+        return serveurCA;
+
+    }
+
+    public List<ServeurData> afficherServeurNonCA(String dateDebut, String dateFin) throws SQLException {
+
+        Connection connection = DBConnection.createSession();
+        connection.setAutoCommit(false);
+
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT NUMSERV, NOMSERV FROM SERVEUR " +
+                        "WHERE NUMSERV NOT IN ( " +
+                        "SELECT NUMSERV " +
+                        "FROM RESERVATION " +
+                        "INNER JOIN AFFECTER on RESERVATION.NUMTAB = AFFECTER.NUMTAB " +
+                        "WHERE DATRES LIKE AFFECTER.DATAFF " +
+                        "AND DATPAIE BETWEEN to_date(?, 'dd/MM/yyyy') AND to_date(?, 'dd/MM/yyyy') " +
+                        "GROUP BY NUMSERV)");
+        preparedStatement.setString(1, dateDebut);
+        preparedStatement.setString(2, dateFin);
+        ResultSet rs = preparedStatement.executeQuery();
+
+        List<ServeurData> serveurCA = new ArrayList<>();
+
+        while (rs.next()) {
+            int numserv = rs.getInt("numserv");
+            String nom = rs.getString("nomserv");
+            serveurCA.add(new ServeurData(numserv, nom, 0, 0));
+        }
+
+        connection.commit();
+        connection.close();
+
+        return serveurCA;
 
     }
 

@@ -57,9 +57,13 @@ public class MenuController {
     }
 
     public void afficherCA(ActionEvent actionEvent) {
+        AfficherServeurCAController controller = Views.AFFICHAGE_SERVEUR_CA.loadScene();
+        controller.initialize(personne);
     }
 
     public void afficherServeursNonCA(ActionEvent actionEvent) {
+        AfficherServeurNonCAController controller = Views.AFFICHAGE_SERVEUR_NON_CA.loadScene();
+        controller.initialize(personne);
     }
 
 }
