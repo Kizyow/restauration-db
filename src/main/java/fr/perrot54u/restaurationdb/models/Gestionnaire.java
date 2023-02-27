@@ -67,6 +67,76 @@ public class Gestionnaire extends Serveur {
 
     }
 
+    public boolean creerServeur(String nom, String email, String password, String grade) throws SQLException {
+
+        Connection connection = DBConnection.createSession();
+        connection.setAutoCommit(false);
+
+        try {
+
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT MAX(numserv) as maxi FROM serveur");
+            int max = 0;
+            if (rs.next()) {
+                max = rs.getInt("maxi");
+            }
+            statement.close();
+
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO serveur VALUES(?,?,?,?,?)");
+
+            ps.setInt(1, max+1);
+            ps.setString(2, email);
+            ps.setString(3, password);
+            ps.setString(4, nom);
+            ps.setString(5, grade);
+            ps.executeUpdate();
+
+            ps.close();
+
+            connection.commit();
+            connection.close();
+
+            return true;
+
+        } catch (SQLException e) {
+            connection.rollback();
+            connection.close();
+            return false;
+        }
+
+    }
+
+    public boolean updateServeur(int numserv, String nom, String email, String password, String grade) throws SQLException {
+
+        Connection connection = DBConnection.createSession();
+        connection.setAutoCommit(false);
+
+        try {
+
+            PreparedStatement ps = connection.prepareStatement("UPDATE serveur SET email=?,passwd=?,nomserv=?,grade=? WHERE numserv = ?");
+
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ps.setString(3, nom);
+            ps.setString(4, grade);
+            ps.setInt(5, numserv);
+            ps.executeUpdate();
+
+            ps.close();
+
+            connection.commit();
+            connection.close();
+
+            return true;
+
+        } catch (SQLException e) {
+            connection.rollback();
+            connection.close();
+            return false;
+        }
+
+    }
+
     public boolean creerPlat(String libelle, String type, double prix) throws SQLException {
 
         Connection connection = DBConnection.createSession();

@@ -14,7 +14,9 @@ où on doit mettre en place une application permettant de gérer un restaurant e
   - Consulter les plats disponibles
   - Commander des plats
 - Un gestionnaire, en plus de pouvoir faire tous les opérations d'un serveur, peut faire en plus
+  - Gestion des serveurs (création et mise à jour)
   - Affecter un serveur à une table à une date donnée
+  - Gestion des plats (création et mise à jour)
   - Calculer le montant d'une réservation et payer (mise à jour de la table)
   - Affichage des serveurs ayant fait du chiffre d'affaire sur une periode donnée
   - Affichage des serveurs n'ayant pas fait de chiffre d'affaire sur une periode donnée

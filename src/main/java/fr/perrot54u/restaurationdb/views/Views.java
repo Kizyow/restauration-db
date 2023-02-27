@@ -18,6 +18,7 @@ public enum Views {
     RESERVER_TABLE("reserver-table-view.fxml", "Réserver une table - Système de restauration"),
     CONSULTER_PLATS("consulter-plats-view.fxml", "Consulter les plats - Système de restauration"),
     COMMANDER_PLAT("commander-plat-view.fxml", "Commander un plat - Système de restauration"),
+    GERER_SERVEUR("gerer-serveur-view.fxml", "Gérer les serveurs - Système de restauration"),
     AFFECTER_SERVEUR("affecter-serveur-view.fxml", "Affecter un serveur - Système de restauration"),
     GERER_PLAT("gerer-plat-view.fxml", "Gérer les plats - Système de restauration"),
     CALCUL_MONTANT("calcul-montant-view.fxml", "Calculer le montant - Système de restauration"),

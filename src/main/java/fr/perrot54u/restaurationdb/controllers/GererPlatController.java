@@ -77,7 +77,6 @@ public class GererPlatController {
             boolean cree = personne.updatePlat(listPlat.getValue(), nomPlatUpdate.getText(), listTypeUpdate.getValue(), Double.parseDouble(prixPlatUpdate.getText()));
             if(cree){
                 result.setText("Vous avez bien mis à jour le plat n° " + listPlat.getValue() + " s'appelant " + nomPlatUpdate.getText()  + " (" + listTypeUpdate.getValue() + ") à " + prixPlatUpdate.getText() + "€");
-                listPlat.getItems().setAll(personne.listPlat());
             } else {
                 result.setText("La mise à jour du plat n'a pas pu être effectuée...");
             }
